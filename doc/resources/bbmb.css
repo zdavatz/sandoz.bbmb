@@ -1,0 +1,298 @@
+body
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #FFFFFF;
+}
+a, a:visited {
+  color: blue;
+  text-decoration: none;
+}
+a:hover {
+  color: #026;
+}
+a.block {
+  display: block;
+}
+a.promotion {
+  background-color: #FF6;
+}
+a.promotion, a.sale {
+  border: 1px solid #333;
+  color: #333;
+  padding: 1px 4px;
+  font-weight: bold;
+  font-size: 12px;
+}
+a.sale {
+  background-color: #6F6;
+}
+td.description, a.commit-time {
+  font-size: 14px;
+  font-weight: bold;
+}
+div.address {
+  padding: 4px;
+}
+div#admin-address {
+  position: relative;
+  left: 60%;
+}
+div#catalogue td {
+  vertical-align: top;
+  font-weight: bold;
+}
+div#catalogue td td {
+  font-weight: normal;
+}
+div#catalogue td.catalogue {
+  padding: 0px;
+  vertical-align: top;
+}
+div#divider {
+	background-color: #026;
+  height: 20px;
+}
+div.dojoTooltip {
+  font-size: 12px;
+}
+div#head img {
+	margin-bottom: 43px;
+	border: 0;
+}
+div.info {
+  padding: 12px 4px;
+  font-size: 14px;
+  font-weight: bold;
+	background-color: #EAEDEF;
+}
+div#info td {
+  vertical-align: top;
+}
+div.limited {
+  max-width: 90px;
+}
+div#language-chooser {
+  float: right;
+}
+div#language-chooser a {
+  padding: 0px 4px;
+  border-left: 1px solid black;
+}
+div#language-chooser a:first-child {
+  border-left: 0px;
+}
+div#language-chooser a {
+  color: black;
+}
+div#language-chooser a:link, div#language-chooser a:visited {
+  color: blue;
+}
+div#language-chooser a:hover {
+  color: black;
+}
+div.login-foot {
+  font-weight: bold;
+  cursor: pointer;
+  color: blue;
+}
+div#welcome {
+  font-weight: bold;
+  padding: 4px;
+}
+div#logged-in-as {
+  float: right;
+  font-weight: bold;
+  padding: 4px;
+}
+div#filter, div#search { 
+  float: right;
+}
+div#foot, div#title {
+  color: white;
+	background-color: #026;
+  padding: 4px;
+}
+div#foot a {
+  color: white;
+	background-color: #026;
+}
+div#navigation {
+  float: right;
+}
+div#navigation a {
+  padding: 0px 4px;
+  border-left: 1px solid white;
+}
+div#navigation a:first-child {
+  border-left: 0px;
+}
+div#navigation a {
+  color: red;
+}
+div#navigation a:link, div#navigation a:visited {
+  color: white;
+}
+div#navigation a:hover {
+  color: red;
+}
+div.new-customer {
+  cursor: pointer;
+  color: blue;
+}
+div#order-total, td.order-total {
+  font-weight: bold;
+  padding: 8px 4px 8px 8px;
+	background-color: #EAEDEF;
+  border-top: 1px solid #BBB;
+}
+div#order-total label {
+  margin-right: 4px;
+}
+div#pager {
+  padding: 4px;
+}
+div.tab {
+  background-color: #AAF;
+  padding: 4px;
+  border-bottom: 2px solid #026;
+}
+div.tab a {
+  padding: 2px 4px 2px 4px;
+  margin: 2px;
+  position: relative;
+  top: 2px;
+  background-color: #026;
+  color: white;
+  border-top: 1px solid #026;
+  border-left: 1px solid #026;
+  border-right: 1px solid #026;
+}
+div.tab a:link, div.tab a:visited {
+  background-color: #AAF;
+  color: #026;
+}
+div#title {
+  font-weight: bold;
+}
+div.toggler {
+	cursor: default;
+	border: 1px solid #BBB;
+	padding: 2px;
+	background-color: #CCC;
+}
+div#toolbar {
+  min-height: 20px;
+  white-space: nowrap;
+}
+div#toolbar div {
+  display: inline;
+}
+form {
+  margin: 0px;
+}
+form#clear, form#transfer-dat, form#bcread {
+  display: inline;
+}
+form#login {
+  border-top: 20px solid #026;
+}
+input[type=text], input[type=password] {
+  width: 200px;
+}
+input#city {
+  width: 148px;
+}
+input#plz, input.tiny, td.tiny, td.tiny input {
+  width: 49px;
+}
+label {
+  font-weight: bold;
+}
+label.error {
+  color: red;
+}
+span.guide {
+  padding: 4px;
+}
+table#favorites {
+	background-color:#CEF;
+}
+table.list {
+  width: 100%
+}
+table#new-customer-form {
+  margin: 4px;
+  background-color: #CDF;
+  border: 1px solid #ABF;
+  width: auto;
+}
+td, th {
+  padding: 4px
+}
+td.big {
+	font-weight:bold;
+	font-size:14px;
+}
+td.additional-info {
+  padding-left: 8px;
+}
+td.contact {
+  font-weight: bold;
+	background-color: #EAEDEF;
+}
+td.delete {
+  width: 60px;
+  font-size: 11px;
+}
+td.login-foot {
+  padding-top: 30px;
+  vertical-align: top;
+}
+td.new-customer a {
+	color: #026;
+	background-color: #FFFFFF;
+}
+td.new-customer a:hover {
+  text-decoration: underline;
+}
+td.processingerror {
+  color: red;
+  font-weight: bold;
+}
+td.right, th.right, td.total, div.right {
+  text-align: right;
+}
+td.stable {
+  white-space: nowrap;
+}
+td.total {
+  font-weight: bold;
+}
+td.top {
+  vertical-align: top;
+}
+textarea {
+	font-size:12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	width: 200px;
+	height: 80px;
+}
+th, th a, th a:visited {
+  text-align: left;
+  color: white;
+	background-color: #026;
+}
+th a:hover {
+  color: red;
+}
+tr.bg {
+	background-color: #EAEDEF;
+}
+tr#controls {
+	background-color: #FFF;
+}
+tr.divider {
+	background-color: #CCC;
+  border: 1px solid #BBB;
+}

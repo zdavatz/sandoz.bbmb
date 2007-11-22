@@ -1,0 +1,14 @@
+4100603650	7601001024410	Publikums-Apotheke	Frau	Nelly	Schaller	Park-Apotheke		Hauptstrasse 78	8280	Kreuzlingen	071 672 40 55	071 672 40 50
+4100603418	7601001367319	Publikums-Apotheke	Frau	Silvia	Hofmann	Eulen-Apotheke AG		Wallisellenstrasse 333	8050	Zürich	044 322 34 15	044 322 24 46
+4100602684	7601001303744	Publikums-Apotheke	Herr Dr.	Walter	Bertschi	Park-Apotheke		Gutstrasse 162	8055	Zürich	044 492 70 80	044 491 06 60
+4100602592	7601001356801	Publikums-Apotheke	Herr Dr.	Eric	Ziegler	Nord-Apotheke AG	Topwell-Apotheke AG	Wehntalerstrasse 537	8046	Zürich	044 371 06 05	044 371 67 34
+4100603347	7601001017818	Publikums-Apotheke	Frau	Damaris	Bucher	Gallus-Apotheke		Oberer Graben 22	9000	St. Gallen	071 222 24 44	071 222  87 80
+4100602686	7601001007789	Publikums-Apotheke	Frau	Silvia	Gerber	Quintilius-Apotheke		Grabenstrasse	8184	Bachenbülach	044 860 29 19	044 860 32 13
+4100603260	7601001006812	Publikums-Apotheke	Herr Dr.	Beat	Disler	Rosen-Apotheke		Allschwilerstr. /Rudolfstrasse 4	4054	Basel	061 302 53 53	061 302 16 16
+4100603248	7601001251595	Publikums-Apotheke	Frau	Eva	Schiller	Stern-Apotheke		Laufenstrasse 62	4053	Basel	061 331 31 66	061 331 41 13
+4100602663	7601001022102	Publikums-Apotheke	Herr Dr.	Rudolf	Andres	Stadelhofen-Apotheke		Goethestrasse 22	8001	Zürich	044 268 30 00	044 268 30 04
+4100606346	7601001373549	Publikums-Apotheke	Frau	Carin	Kranendonk	Heuried-Apotheke	Topwell-Apotheke AG	Birmensdorferstrasse 379	8055	Zürich	044 462 05 77	044 462 05 87
+4100602675	7601001370265	Publikums-Apotheke	Herr	Gerald	Welbergen	Apotheke im Brühl AG		Regensdorferstrasse 18	8049	Zürich	044 342 42 12	044 342 42 17
+4100603089	7601001367869	Publikums-Apotheke	Frau	Elisabeth	Simeth	Fortuna Apotheke		Tittwiesenstrasse 55	7000	Chur	081 284 20 22	081 284 50 25
+4100602666	7601001365803	Publikums-Apotheke	Frau	Christiane	Kock-Hecht	Odeon Apotheke AG		Limmatquai 2	8001	Zürich	044 252 59 59	044 252 59 62
+4100602680	7601001007062	Publikums-Apotheke	Herr & Frau Dr.	K. & C.	Egloff	Olympia-Apotheke		Badenerstrasse 6	8004	Zürich	044 241 36 88	044 241 36 43
