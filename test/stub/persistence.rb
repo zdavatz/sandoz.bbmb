@@ -52,6 +52,7 @@ module BBMB
       include Persistable
       index :customer_id
       index :email
+      index :ean13
     end
   end
 end

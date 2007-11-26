@@ -5,7 +5,7 @@ $: << File.expand_path('../../lib', File.dirname(__FILE__))
 $: << File.expand_path('..', File.dirname(__FILE__))
 
 require 'test/unit'
-require 'test/stub/persistence'
+require 'stub/persistence'
 require 'bbmb/util/csv_importer'
 require 'flexmock'
 

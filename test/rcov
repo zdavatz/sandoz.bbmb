@@ -1,0 +1,2 @@
+#!/bin/sh
+exec rcov -Ilib -I ../bbmb/lib/ test/suite.rb ../bbmb/test/suite.rb
