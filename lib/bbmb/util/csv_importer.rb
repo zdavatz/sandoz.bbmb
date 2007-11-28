@@ -11,7 +11,9 @@ module BBMB
 class CsvImporter
   def import(io, persistence=BBMB.persistence)
     count = 0
+    iconv = Iconv.new('utf-8', 'latin1')
     io.each { |line|
+      line = u(iconv.iconv(line))
       record = line.split("\t")
       if(object = import_record(record))
         persistence.save(object)
@@ -24,7 +26,7 @@ class CsvImporter
   def postprocess(persistence=BBMB.persistence)
   end
   def string(str)
-    str = u(Iconv.new('utf-8', 'latin1').iconv(str.to_s)).strip
+    str = str.to_s.strip
     str.gsub(/\s+/, ' ') unless str.empty? 
   end
 end

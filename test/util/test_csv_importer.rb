@@ -12,10 +12,18 @@ require 'flexmock'
 module BBMB
   module Util
 class TestCsvImporter < Test::Unit::TestCase
+  include FlexMock::TestCase
+  def test_import
+    src = StringIO.new "\344\366\374"
+    importer = flexmock(CsvImporter.new)
+    importer.should_receive(:import_record).and_return { |record|
+      assert_equal(u("äöü"), record.first)
+    }
+    importer.import(src)
+  end
   def test_string
     importer = CsvImporter.new
     assert_nil(importer.string(''))
-    assert_equal(u("äöü"), importer.string("\344\366\374"))
   end
 end
 class TestCustomerImporter < Test::Unit::TestCase
