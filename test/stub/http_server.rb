@@ -18,7 +18,7 @@ module BBMB
       alias :print :<<
     end
     class HTTPServer < WEBrick::HTTPServer
-      attr_accessor :document_root
+      attr_accessor :document_root, :inject_params
       def method_missing(method, *args, &block)
         @logger.warn "ignoring method: #{method}"
       end
@@ -48,6 +48,10 @@ module BBMB
           sbsm = SBSM::Request.new(drburi)
           sbsm.meta_eval { define_method(:handle_exception) { |e| raise e } }
           sbsm.cgi.params.update(req.query)
+          if prms = server.inject_params
+            sbsm.cgi.params.update(prms) 
+            server.inject_params = nil
+          end
           sbsm.cgi.env_table['SERVER_NAME'] = 
             BBMB.config.http_server.gsub('http://', '') + ':10080'
           sbsm.cgi.env_table['REQUEST_METHOD'] = req.request_method

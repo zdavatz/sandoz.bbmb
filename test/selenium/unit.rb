@@ -92,7 +92,7 @@ module TestCase
                                       BBMB.config.http_server + ":10080", 10000)
       @selenium.start
     end
-    @selenium.set_context("TestBbmb", "info")
+    @selenium.set_context("TestBbmb")
   end
   def teardown
     @selenium.stop unless $selenium

@@ -118,6 +118,7 @@ class TestFavorites < Test::Unit::TestCase
     }
 
     @selenium.type "file_chooser", path
+    @http_server.inject_params = {"file_chooser", [src]}
     @selenium.click "favorite_transfer"
     @selenium.wait_for_page_to_load "30000"
     assert_equal "BBMB | Schnellbestellung", @selenium.get_title

@@ -299,7 +299,7 @@ class TestCustomer < Test::Unit::TestCase
     close
 =end
 
-    select_window("null")
+    select_window("")
     assert !is_text_present("Das Benutzerprofil wurde nicht gespeichert!")
     assert is_element_present("change_pass")
     assert(is_element_present("generate_pass") \
