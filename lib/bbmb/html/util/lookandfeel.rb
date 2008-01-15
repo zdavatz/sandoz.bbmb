@@ -75,7 +75,7 @@ class Lookandfeel < SBSM::Lookandfeel
       :logout                   =>  "Abmelden",
       :logo                     =>  "Sandoz",
       :new_customer             =>  "Neuer Kunde",
-      :new_customer_mail        =>  "mailto:info@sandoz.ch?subject=Neukunde BBMB - bitte Passwort generieren",
+      :new_customer_mail        =>  "mailto:info.switzerland@sandoz.com?subject=Neukunde BBMB - bitte Passwort generieren",
       :new_customer_invite      =>  "Bestellen Sie jetzt online. Wir richten für Sie den spezifisch auf Ihre Praxis zugeschnittenen, benutzerfreundlichen E-Shop ein!\nUnser Kundenservice oder unsere Aussendienstmitarbeiter beraten Sie gerne!",
       :next                     =>  ">>",
       :nullify                  =>  "Alles auf 0 setzen",
