@@ -156,7 +156,7 @@ Ein Administrator wurde automatisch darüber informiert und wird mit Ihnen Konta
       :unavailable0             =>  "Unidentifiziertes Produkt (",
       :unavailable1             =>  ")",
       :version                  =>  "Commit-ID",
-      :welcome                  =>  "Willkommen bei Sandoz&nbsp;Pharmaceuticals&nbsp;AG\nBei Fragen wenden Sie sich bitte an den Customer&nbsp;Service (Frau&nbsp;Bernasconi oder Frau&nbsp;Bürgisser) Tel.&nbsp;0800&nbsp;858&nbsp;885",
+      :welcome                  =>  "Willkommen bei Sandoz&nbsp;Pharmaceuticals&nbsp;AG\nBei Fragen wenden Sie sich bitte an den Customer&nbsp;Service (Tobias Wyss und Alessandro Pezzuca) Tel.&nbsp;0800&nbsp;858&nbsp;885",
       :ywesee                   =>  "ywesee.com",
     }
   }
