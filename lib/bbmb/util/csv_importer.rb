@@ -99,6 +99,13 @@ class ProductImporter < CsvImporter
         deletables.push product
       end
     }
+    persistence.all(BBMB::Model::Customer) { |customer|
+      [customer.current_order, customer.favorites].each { |order|
+        deletables.each { |product|
+          order.add(0, product)
+        }
+      }
+    }
     persistence.delete(*deletables) unless(deletables.empty?)
   end
 end
