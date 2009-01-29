@@ -5,6 +5,7 @@ require 'bbmb/model/customer'
 require 'bbmb/util/mail'
 require 'encoding/character/utf-8'
 require 'iconv'
+require 'yus/entity'
 
 module BBMB
   module Util
@@ -45,9 +46,14 @@ class CustomerImporter < CsvImporter
   }  
   def import_record(record)
     customer_id = string(record[0])
+    ean13 = string(record[1])
     return unless(/^\d+$/.match(customer_id))
-    customer = Model::Customer.find_by_customer_id(customer_id) \
-      || Model::Customer.new(customer_id)
+    customer = Model::Customer.find_by_customer_id(customer_id)
+    if customer.nil? && !ean13.empty? \
+      && (customer = Model::Customer.find_by_ean13(ean13))
+      customer.customer_id = customer_id
+    end
+    customer ||= Model::Customer.new(customer_id)
     CUSTOMER_MAP.each { |idx, name|
       unless customer.protects? name
         customer.send("#{name}=", string(record[idx]))
