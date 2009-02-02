@@ -49,7 +49,7 @@ class CustomerImporter < CsvImporter
     ean13 = string(record[1])
     return unless(/^\d+$/.match(customer_id))
     customer = Model::Customer.find_by_customer_id(customer_id)
-    if customer.nil? && !ean13.empty? \
+    if customer.nil? && !ean13.to_s.empty? \
       && (customer = Model::Customer.find_by_ean13(ean13))
       customer.customer_id = customer_id
     end
