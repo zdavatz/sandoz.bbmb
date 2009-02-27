@@ -47,6 +47,7 @@ class Lookandfeel < SBSM::Lookandfeel
       :e_invalid_ean13          =>  "Der EAN-Code war ungültig.",
       :e_non_matching_pass      =>  "Das Passwort und die Bestätigung waren nicht identisch.",
       :e_pass_not_set           =>  "Das Passwort konnte nicht gespeichert werden",
+      :e_terms_of_service       =>  "Bitte akzeptieren Sie die Allgemeinen Geschäftsbedingungen (\"AGB\") der Sandoz Pharmaceuticals AG, vgl. unten.",
       :e_user_unsaved           =>  "Das Benutzerprofil wurde nicht gespeichert!",
       :false                    =>  "Nein",
       :favorites                =>  "Schnellbestellung",
@@ -130,6 +131,18 @@ Ein Administrator wurde automatisch darüber informiert und wird mit Ihnen Konta
       :search                   =>  "Suchen",
       :search_favorites         =>  "Suchen",
       :show_pass                =>  "Passwort Anzeigen",
+      :terms                    =>  "Allgemeine Geschäftsbedingungen",
+      :terms_last_accepted      =>  "Bitte akzeptieren Sie die Allgemeinen Geschäftsbedingungen (\"AGB\") der Sandoz Pharmaceuticals AG, vgl. unten.",
+      :terms_of_service         =>  <<-EOS,
+Hiermit akzeptiere ich die Allgemeinen Geschäftsbedingungen (AGB) der Sandoz Pharmaceuticals AG.
+Die aktuelle Version unserer AGB kann auf unserer Website <a href='http://www.generika.ch'>www.generika.ch</a> eingesehen und <a href='http://www.generika.ch/pdf/AGB_D.pdf'>heruntergeladen</a> werden.
+
+J'accepte les Conditions Générales de Vente (CGV) de la société Sandoz Pharmaceuticals SA.
+La version actuelle de nos CGV peut être consultée et <a href='http://www.generika.ch/pdf/AGB_F.pdf'>téléchargée</a> sur notre site Internet <a href='http://www.generiques.ch'>www.generiques.ch</a>.
+
+Accetto le Condizioni Generali di Contratto (CGC) di Sandoz Pharmaceuticals S.A.
+La versione aggiornata delle nostre CGC può essere visionata e <a href='http://www.generika.ch/pdf/AGB_I.pdf'>scaricata</a> al nostro sito web <a href='http://www.generici.ch'>www.generici.ch</a>.
+      EOS
       :th_city                  =>  "Ort",
       :th_commit_time           =>  "Bestellung vom",
       :th_customer_id           =>  "Kundennr",
@@ -159,6 +172,9 @@ Ein Administrator wurde automatisch darüber informiert und wird mit Ihnen Konta
       :welcome                  =>  "Willkommen bei Sandoz&nbsp;Pharmaceuticals&nbsp;AG\nBei Fragen wenden Sie sich bitte an den Customer&nbsp;Service (<a href='mailto:Customer.Service_ch@sandoz.com'>Customer.Service_ch@sandoz.com</a>) Tel.&nbsp;0800&nbsp;858&nbsp;885",
       :ywesee                   =>  "ywesee.com",
     }
+  }
+  ENABLED = {
+    :terms_of_service => true,
   }
   RESOURCES = {
     :activex    => 'activex',

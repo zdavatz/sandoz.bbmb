@@ -172,6 +172,9 @@ div.tab a:link, div.tab a:visited {
   background-color: #AAF;
   color: #026;
 }
+div#terms-of-service td {
+  vertical-align: top;
+}
 div#title {
   font-weight: bold;
 }
@@ -227,7 +230,7 @@ table#new-customer-form {
   border: 1px solid #ABF;
   width: auto;
 }
-td, th {
+td, th, div.processingerror {
   padding: 4px
 }
 td.big {
@@ -256,7 +259,7 @@ td.new-customer a {
 td.new-customer a:hover {
   text-decoration: underline;
 }
-td.processingerror {
+td.processingerror, div.processingerror {
   color: red;
   font-weight: bold;
 }
