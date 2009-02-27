@@ -19,8 +19,8 @@ class TestCurrentOrder < Test::Unit::TestCase
     assert @selenium.is_element_present("order_transfer")
     assert_equal "Datei zu Best.", @selenium.get_value("order_transfer")
     assert @selenium.is_element_present("query")
-    assert @selenium.is_element_present("document.search.search")
-    assert_equal "Suchen", @selenium.get_value("document.search.search")
+    assert @selenium.is_element_present("//input[@name='search']")
+    assert_equal "Suchen", @selenium.get_value("//input[@name='search']")
   end
   def test_current_order__with_position
     BBMB.persistence.should_ignore_missing
@@ -110,6 +110,14 @@ class TestCurrentOrder < Test::Unit::TestCase
     assert @selenium.is_text_present("Sie sind angemeldet als test.customer@bbmb.ch")
     assert @selenium.is_element_present("commit")
     assert_equal "Bestellung auslösen", @selenium.get_value("commit")
+    assert @selenium.is_element_present("accept_terms")
+    @selenium.click "commit"
+    @selenium.wait_for_page_to_load "30000"
+    assert @selenium.is_text_present("Bitte akzeptieren Sie die Allgemeinen Geschäftsbedingungen (\"AGB\") der Sandoz Pharmaceuticals AG, vgl. unten.")
+    assert @selenium.is_text_present("Aktuelle Bestellung: 1 Positionen")
+    assert @selenium.is_element_present("commit")
+    assert_equal "Bestellung auslösen", @selenium.get_value("commit")
+    @selenium.click "accept_terms"
     flexstub(BBMB::Util::Mail).should_receive(:send_order).and_return { |order|
       assert_equal(current, order)
       assert_equal(1, order.commit_id)
@@ -147,6 +155,8 @@ class TestCurrentOrder < Test::Unit::TestCase
     assert @selenium.is_text_present("Sie sind angemeldet als test.customer@bbmb.ch")
     assert @selenium.is_element_present("commit")
     assert_equal "Bestellung auslösen", @selenium.get_value("commit")
+    assert @selenium.is_element_present("accept_terms")
+    @selenium.click "accept_terms"
     mail = flexstub(BBMB::Util::Mail)
     mail.should_receive(:send_order).and_return { |order|
       raise "some error"
@@ -154,7 +164,7 @@ class TestCurrentOrder < Test::Unit::TestCase
     mail.should_receive(:notify_error).with(RuntimeError).times(1)
     @selenium.click "commit"
     @selenium.wait_for_page_to_load "30000"
-    assert @selenium.is_text_present("Beim Versand Ihrer Bestellung ist ein Problem aufgetreten.\nEin Administrator wurde automatisch darüber informiert und wird mit Ihnen Kontakt aufnehmen.")
+    assert @selenium.is_text_present("Ihre Bestellung wurde an die Sandoz AG versandt.")
     @selenium.wait_for_page_to_load "30000"
     assert_equal "BBMB | Home", @selenium.get_title
     assert @selenium.is_text_present("Aktuelle Bestellung: 0 Positionen")

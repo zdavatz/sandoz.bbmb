@@ -45,6 +45,8 @@ class Lookandfeel < SBSM::Lookandfeel
       :e_email_required         =>  "Bitte speichern Sie zuerst eine gültige Email-Adresse",
       :e_empty_pass             =>  "Das Passwort war leer.",
       :e_invalid_ean13          =>  "Der EAN-Code war ungültig.",
+      :e_invalid_quantity0      =>  "'",
+      :e_invalid_quantity1      =>  "' ist keine gültige Zahl.",
       :e_non_matching_pass      =>  "Das Passwort und die Bestätigung waren nicht identisch.",
       :e_pass_not_set           =>  "Das Passwort konnte nicht gespeichert werden",
       :e_terms_of_service       =>  "Bitte akzeptieren Sie die Allgemeinen Geschäftsbedingungen (\"AGB\") der Sandoz Pharmaceuticals AG, vgl. unten.",

@@ -12,7 +12,7 @@ class TestLogin < Test::Unit::TestCase
   def test_login
     open "/"
     assert_equal "BBMB", get_title
-    assert is_text_present("Wilkommen bei Sandoz")
+    assert is_text_present("Willkommen bei Sandoz")
     assert_equal "Email", get_text("//label[@for='email']")
     assert is_element_present("email")
     assert_equal "Passwort", get_text("//label[@for='pass']")
@@ -47,7 +47,7 @@ class TestLogin < Test::Unit::TestCase
     open "/"
     assert_equal "BBMB", get_title
     open "/de/home"
-    assert is_text_present("Wilkommen bei Sandoz")
+    assert is_text_present("Willkommen bei Sandoz")
     assert is_element_present("email")
     assert is_element_present("pass")
     assert is_element_present("//input[@name='login']")

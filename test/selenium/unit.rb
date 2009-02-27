@@ -3,6 +3,7 @@
 
 $: << File.expand_path('../../lib', File.dirname(__FILE__))
 
+ENV['LD_LIBRARY_PATH'] = '/usr/local/firefox'
 if(pid = Kernel.fork)
   at_exit {
     Process.kill('HUP', pid)

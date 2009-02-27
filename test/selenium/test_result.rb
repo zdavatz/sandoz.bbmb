@@ -143,6 +143,7 @@ class TestResult < Test::Unit::TestCase
     @selenium.click "document.products.order_product"
     @selenium.wait_for_page_to_load "30000"
     assert_equal "BBMB | Suchen", @selenium.get_title
+    assert @selenium.is_text_present("'trigger an error!' ist keine gültige Zahl.")
     assert @selenium.is_element_present("//input[@name='quantity[12345]']")
     assert_equal '5', @selenium.get_value("//input[@name='quantity[12345]']")
     @selenium.type "quantity[12345]", "10"
