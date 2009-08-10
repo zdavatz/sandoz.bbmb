@@ -84,6 +84,7 @@ class Lookandfeel < SBSM::Lookandfeel
       :nullify                  =>  "Alles auf 0 setzen",
       :order                    =>  "Archiv - Bestellung",
       :orders                   =>  "Archiv",
+      :order_confirmation       =>  "Bestellbestätigung",
       :order_problem            =>  <<-EOS,
 Beim Versand Ihrer Bestellung ist ein Problem aufgetreten.
 Ein Administrator wurde automatisch darüber informiert und wird mit Ihnen Kontakt aufnehmen.
