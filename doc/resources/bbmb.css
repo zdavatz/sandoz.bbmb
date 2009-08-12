@@ -172,7 +172,7 @@ div.tab a:link, div.tab a:visited {
   background-color: #AAF;
   color: #026;
 }
-div#terms-of-service td {
+div#terms-of-service td, div#order-confirmation td {
   vertical-align: top;
 }
 div#title {

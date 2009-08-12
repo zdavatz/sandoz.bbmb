@@ -85,6 +85,13 @@ class Lookandfeel < SBSM::Lookandfeel
       :order                    =>  "Archiv - Bestellung",
       :orders                   =>  "Archiv",
       :order_confirmation       =>  "Bestellbestätigung",
+      :order_confirmation_text  =>  <<-EOS,
+Wenn Sie eine Bestellbestätigung wünschen, bitten wir Sie dieses Feld zu markieren.
+
+Se voule ricevere una confirmazione del Suo ordine, voglia attivare il servizio cliccando qui.
+
+Si vous aimeriez recevoire une confirmation de votre commande veuillez activer le service ici.
+      EOS
       :order_problem            =>  <<-EOS,
 Beim Versand Ihrer Bestellung ist ein Problem aufgetreten.
 Ein Administrator wurde automatisch darüber informiert und wird mit Ihnen Kontakt aufnehmen.
