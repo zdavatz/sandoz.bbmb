@@ -50,7 +50,8 @@ class CustomerImporter < CsvImporter
     return unless(/^\d+$/.match(customer_id))
     customer = Model::Customer.find_by_customer_id(customer_id)
     if customer.nil? && !ean13.to_s.empty? \
-      && (customer = Model::Customer.find_by_ean13(ean13))
+      && (customer = Model::Customer.find_by_ean13(ean13) \
+                  || Model::Customer.find_by_customer_id(ean13))
       customer.customer_id = customer_id
     end
     customer ||= Model::Customer.new(customer_id)
