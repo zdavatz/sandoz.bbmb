@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 # Util::CsvImporter -- sandoz.bbmb.ch -- 19.11.2007 -- hwyss@ywesee.com
 
 require 'bbmb/model/customer'
 require 'bbmb/util/mail'
-require 'encoding/character/utf-8'
-require 'iconv'
 require 'yus/entity'
 
 module BBMB
@@ -12,9 +11,13 @@ module BBMB
 class CsvImporter
   def import(io, persistence=BBMB.persistence)
     count = 0
-    iconv = Iconv.new('utf-8', 'latin1')
+    if io.respond_to?(:path)
+      get_encoding =  `file --brief "#{io.path}"`
+      io.set_encoding('ISO-8859-1', 'UTF-8') if /^ISO-8859/.match(get_encoding)
+    end
+
     io.each { |line|
-      line = u(iconv.iconv(line))
+            next if line.size < 5
       record = line.split("\t")
       if(object = import_record(record))
         persistence.save(object)
