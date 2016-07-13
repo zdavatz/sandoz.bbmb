@@ -25,8 +25,6 @@ require 'ydim/odba'
 require 'ydim/root_session'
 require 'ydim/root_user'
 
-require File.join(here, 'bbmb/persistence/odba.rb')
-
 module YDIM
   class Server
     # http://stackoverflow.com/questions/2982677/ruby-1-9-invalid-byte-sequence-in-utf-8
