@@ -19,12 +19,21 @@ require 'ydim/factory'
 require 'ydim/root_user'
 require 'ydim/server'
 require 'ydim/util'
+require 'bbmb/config'
+require 'bbmb/model/customer'
+require 'bbmb/model/quota'
+require 'bbmb/model/product'
+require 'bbmb/model/promotion'
 require 'odba/connection_pool'
 require 'odba/drbwrapper'
 require 'ydim/odba'
 require 'ydim/root_session'
 require 'ydim/root_user'
 
+module BBMB
+  @config.load_files.each { |local| require local }
+  require File.join('bbmb', 'persistence', @config.persistence)
+end
 module YDIM
   class Server
     # http://stackoverflow.com/questions/2982677/ruby-1-9-invalid-byte-sequence-in-utf-8
@@ -118,6 +127,10 @@ module YDIM
       when
         Yus::Entity,
         Yus::Privilege,
+        BBMB::Model::Customer,
+        BBMB::Model::Quota,
+        BBMB::Model::ProductInfo,
+        BBMB::Model::Promotion,
         YDIM::AutoInvoice,
         YDIM::Debitor,
         YDIM::Debitor,
@@ -149,7 +162,7 @@ end
 @logger = Logger.new("/tmp/#{File.basename(__FILE__)}.log")
 @logger.level = Logger::DEBUG
 @logger.info  "#{Time.now}: Calling  #{File.basename(__FILE__)}"
-config = YDIM::Server.config
+
 module Yus
   class Entity
     include ODBA::Persistable
@@ -205,22 +218,18 @@ module BBMB
   end
 end
 
-ODBA.storage.dbi = ODBA::ConnectionPool.new(config.db_driver_url,
-  config.db_user, config.db_auth, :client_encoding => 'LATIN1')
-ODBA.cache.setup
-DRb.install_id_conv ODBA::DRbIdConv.new
 
 @server = YDIM::Server.new(config, @logger)
 @logger.info "DB used is #{config.db_name} user: #{config.db_user} auth: #{config.db_auth}"
 @server.extend(DRbUndumped)
 session = YDIM::RootSession.new(YDIM::RootUser.new(1))
 session.serv = @server
-{ # :orders => BBMB::Model::Order.odba_extent,
-  # :products => BBMB::Model::ProductInfo.odba_extent,
-  # :customers => BBMB::Model::Customer.odba_extent,
-  # :promotions => BBMB::Model::Promotion.odba_extent,
-  # :quota => BBMB::Model::Quota.odba_extent,
-  # :subject => BBMB::Model::Subject.odba_extent,
+{ :orders => BBMB::Model::Order.odba_extent,
+  :products => BBMB::Model::ProductInfo.odba_extent,
+  :customers => BBMB::Model::Customer.odba_extent,
+  :promotions => BBMB::Model::Promotion.odba_extent,
+  :quota => BBMB::Model::Quota.odba_extent,
+  :subject => BBMB::Model::Subject.odba_extent,
   :entitites => Yus::Entity.odba_extent,
   :privileges => Yus::Privilege.odba_extent,
   :debitors => YDIM::Debitor.odba_extent,
