@@ -219,6 +219,7 @@ module BBMB
 end
 
 
+config = YDIM::Server.config
 @server = YDIM::Server.new(config, @logger)
 @logger.info "DB used is #{config.db_name} user: #{config.db_user} auth: #{config.db_auth}"
 @server.extend(DRbUndumped)
