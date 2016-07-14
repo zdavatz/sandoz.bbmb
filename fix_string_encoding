@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+
+# How to run this scipt.
+#
+#   % bundle exec ruby ./script/fix_string_encoding \
+#     config=/var/www/sandoz.bbmb.ch/etc/config.yml
+#
+# NOTE:
+#   * please don't run this script twice
+
+$: << File.expand_path('../lib', __FILE__)
+
+require 'drb'
+require 'bbmb/config'
+require 'bbmb/model/customer'
+
+# bbmb persistence needs these gems
+require 'ydim/odba'
+require 'ydim/root_session'
+require 'ydim/root_user'
+
+module BBMB
+  @config.load_files.each { |file| require file }
+  require File.join('bbmb', 'persistence', @config.persistence)
+end
+
+ENCODING_FORCE_BACK = Encoding::ISO_8859_1
+ENCODING_TO         = Encoding::UTF_8
+
+class FixServer < YDIM::Server
+  def fixit!(target_class)
+    target_class.odba_extent.each do |r|
+      r.instance_variables.map { |var|
+        [var, r.instance_variable_get(var)]
+      }.select { |var, value| # filter (String field only)
+        [var, value] if value.is_a?(String)
+      }.compact.map { |var, value|
+        [var, value.encode(ENCODING_FORCE_BACK).force_encoding(ENCODING_TO)
+        ]
+      }.map { |var, value|
+        r.instance_variable_set(var, value)
+      }
+      r.odba_store
+      print '.'
+    end
+  end
+end
+
+
+script = File.basename(__FILE__)
+
+logger = Logger.new("/tmp/#{script}.log")
+logger.level = Logger::DEBUG
+logger.info("#{Time.now}: calling  #{script}")
+
+# server
+config  = YDIM::Server.config
+server = FixServer.new(config, logger)
+server.extend(DRbUndumped)
+
+puts
+puts "script: #{script}"
+
+# fix target class
+%w{
+  BBMB::Model::Customer
+}.map { |target_class|
+  puts "fixing #{target_class.split('::').last}"
+  server.fixit!(self.class.const_get(target_class))
+}
+
+puts
+puts 'done'
+puts 'please restart bbmbd!'
