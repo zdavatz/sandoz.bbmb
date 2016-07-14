@@ -5,9 +5,6 @@
 #   % bundle exec ruby ./script/fix_string_encoding \
 #     config=/var/www/sandoz.bbmb.ch/etc/config.yml
 #
-# NOTE:
-#   * please don't run this script twice
-
 $: << File.expand_path('../lib', __FILE__)
 
 require 'drb'
@@ -35,8 +32,13 @@ class FixServer < YDIM::Server
       }.select { |var, value| # filter (String field only)
         [var, value] if value.is_a?(String)
       }.compact.map { |var, value|
-        [var, value.encode(ENCODING_FORCE_BACK).force_encoding(ENCODING_TO)
-        ]
+        # In production, there are 2 type texts which has strange encoding.
+        # Then rescue it and force back again.
+        begin
+          [var, value.encode(ENCODING_FORCE_BACK).force_encoding(ENCODING_TO)]
+        rescue Encoding::InvalidByteSequenceError
+          [var, value.force_encoding(ENCODING_FORCE_BACK).encode(ENCODING_TO)]
+        end
       }.map { |var, value|
         r.instance_variable_set(var, value)
       }
