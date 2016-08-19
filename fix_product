@@ -1,0 +1,118 @@
+#!/usr/bin/env ruby
+
+# How to run this scipt.
+#
+#   % bundle exec ruby ./script/fix_product \
+#     config=/var/www/sandoz.bbmb.ch/etc/config.yml
+#
+$: << File.expand_path('../lib', __FILE__)
+
+require 'drb'
+require 'bbmb/config'
+require 'bbmb/model/product'
+
+# bbmb persistence needs these gems
+require 'ydim/odba'
+require 'ydim/root_session'
+require 'ydim/root_user'
+
+require 'odba'
+
+module BBMB
+  @config.load_files.each { |file| require file }
+  require File.join('bbmb', 'persistence', @config.persistence)
+end
+
+class FixServer < YDIM::Server
+  def fixit!(index_name, attr)
+    wrong_entries = ODBA.cache.retrieve_from_index(index_name, '').select { |t|
+      !t.is_a?(BBMB::Model::Product)
+    }
+    wrong_entries.each do |entry|
+      record = ODBA.storage.index_origin_ids(index_name, entry.odba_id).first
+      code = record[1].to_s # pcode|ean13 value in search_term
+
+      product = case entry
+                when BBMB::Model::Order::Position
+                  entry.product.to_product
+                when BBMB::Model::ProductInfo
+                  entry.to_product
+                when Array
+                  matched = nil
+                  entry.each { |e| # find matched product object
+                    product = if e.is_a?(BBMB::Model::Order::Position)
+                                e.product.to_product
+                              elsif e.is_a?(BBMB::Model::ProductInfo)
+                                e.to_product
+                              else
+                                raise "Unknown entry in Array! #{e.klass}"
+                              end
+                    # search_term
+                    matched = product if product.send(attr).to_s == code
+                  }
+                  matched
+                else
+                  raise "Unknown object as wrong data! #{entry.klass}"
+                end
+      # This is a hack (use code instead of odba_id...)
+      ODBA.storage.delete_index_element(index_name, code, 'search_term')
+
+      if !product || (product.send(attr).to_s != code)
+        # delete only (this case needs updater, after this fixing)
+        print 'E'
+        next
+      end
+
+      product.odba_store
+
+      new_records = ODBA.storage.index_origin_ids(index_name, entry.odba_id)
+      if new_records.length == 0
+         index = ODBA.cache.indices.fetch(index_name)
+         index.do_update_index(product.odba_id, code, product.odba_id);
+         # entirely new product is created
+         print '.'
+      else
+         # if product is already stored, index will be automatically created
+         print '*'
+      end
+
+      final_result = ODBA.storage.index_origin_ids(index_name, product.odba_id)
+      if final_result.length != 1
+        raise 'SOMETHING WRONG !!'
+      end
+    end
+  end
+end
+
+
+script = File.basename(__FILE__)
+
+logger = Logger.new("/tmp/#{script}.log")
+logger.level = Logger::DEBUG
+logger.info("#{Time.now}: calling  #{script}")
+
+# server
+config  = YDIM::Server.config
+server = FixServer.new(config, logger)
+server.extend(DRbUndumped)
+
+puts
+puts "script: #{script}"
+
+# fix target indices
+%w{
+  pcode
+  ean13
+}.map { |attr|
+  index_name = "bbmb_model_product_#{attr}"
+  puts
+  puts "fixing index: #{index_name}"
+  server.fixit!(index_name, attr)
+}
+
+puts
+puts
+puts 'NOTE: if "E" appeared in output, then you should also run updater script'
+puts
+puts 'done'
+puts 'please restart bbmbd!'
