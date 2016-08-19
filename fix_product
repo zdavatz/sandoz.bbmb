@@ -103,6 +103,7 @@ puts "script: #{script}"
 %w{
   pcode
   ean13
+  article_number
 }.map { |attr|
   index_name = "bbmb_model_product_#{attr}"
   puts
