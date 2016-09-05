@@ -88,7 +88,7 @@ class ProductImporter < CsvImporter
     product = Model::Product.find_by_article_number(article_number) \
       || Model::Product.new(article_number)
     PRODUCT_MAP.each { |idx, name|
-      value = string(record[idx])
+      value = string(record[idx]).to_s.gsub(/\r?\n/, '')
       writer = "#{name}="
       case name
       when :description_de
