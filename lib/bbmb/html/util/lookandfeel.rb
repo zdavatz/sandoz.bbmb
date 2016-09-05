@@ -196,17 +196,6 @@ La versione aggiornata delle nostre CGC può essere visionata e <a href='http://
   def navigation
     zone_navigation + super
   end
-
-  alias :orig_base_url :base_url
-
-  # Provides non flavored base url
-  def base_url
-    _flavor = @flavor
-    @flavor = nil
-    url = orig_base_url
-    @flavor = _flavor
-    url
-  end
 end
     end
   end
