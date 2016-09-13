@@ -83,9 +83,13 @@ class ProductImporter < CsvImporter
   end
   def import_record(record)
     article_number = string(record[0])
-    return unless(/^\d+$/.match(article_number))
-    @active_products.store article_number, true
-    product = Model::Product.find_by_article_number(article_number) \
+    pcode          = string(record[4])
+    return if /^\d+$/ !~ article_number || /^\d+$/ !~ pcode
+    @active_products.store(pcode, true)
+    # NOTE
+    #   The article numbers will be often changed...
+    #   So use pharmacode to find product.
+    product = Model::Product.find_by_pcode(pcode) \
       || Model::Product.new(article_number)
     PRODUCT_MAP.each { |idx, name|
       value = string(record[idx]).to_s.gsub(/\r?\n/, '')
@@ -102,11 +106,11 @@ class ProductImporter < CsvImporter
     product
   end
   def postprocess(persistence)
-    return if(@active_products.empty?)
+    return if @active_products.empty?
     deletables = []
     persistence.all(BBMB::Model::Product) { |product|
-      unless(@active_products.include?(product.article_number))
-        deletables.push product
+      unless @active_products.include?(product.pcode)
+        deletables.push(product)
       end
     }
     persistence.all(BBMB::Model::Customer) { |customer|

@@ -101,8 +101,11 @@ class TestProductImporter < Minitest::Test
   def test_import
     src = File.open(File.join(@dir, 'Artikel.TXT'))
     persistence = flexmock("persistence")
-    persistence.should_receive(:save).times(50).with(Model::Product)
-    persistence.should_receive(:all)
+    persistence.should_receive(:all).with_any_args
+    # some lines does not have pharmacode
+    persistence.should_receive(:save).times(38).and_return { |product|
+      assert_instance_of(Model::Product, product)
+    }
     ProductImporter.new.import(src, persistence)
   end
   def test_import_record
