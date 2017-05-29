@@ -25,7 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "htmlgrid"
   spec.add_dependency "ydim",    '>= 0.5.1'
   spec.add_dependency "syck"
-  spec.add_dependency "rmail"
   spec.add_dependency "rclconf"
   spec.add_dependency "needle"
   spec.add_dependency "hpricot"

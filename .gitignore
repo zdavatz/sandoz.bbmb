@@ -4,4 +4,4 @@ pkg/
 test/data/
 .bundle
 .ruby-version
-Gemfile.lock
+

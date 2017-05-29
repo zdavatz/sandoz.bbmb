@@ -1,0 +1,137 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bbmb (2.2.6)
+      deprecated (= 2.0.1)
+      hpricot
+      htmlgrid
+      json
+      mail
+      needle
+      odba (>= 1.1.2)
+      rclconf
+      sbsm (>= 1.4.2)
+      syck
+      ydbd-pg (>= 0.5.2)
+      ydbi (>= 0.5.3)
+      ydim (>= 0.5.1)
+      ypdf-writer
+      yus
+    byebug (9.0.6)
+    chrono_logger (1.1.1)
+    coderay (1.1.1)
+    color (1.8)
+    deprecated (2.0.1)
+    diff-lcs (1.2.5)
+    docile (1.1.5)
+    flexmock (2.2.1)
+    highline (1.7.8)
+    hpricot (0.8.6)
+    htmlgrid (1.1.4)
+      sbsm (>= 1.2.7)
+    json (2.0.2)
+    mail (2.6.5)
+      mime-types (>= 1.16, < 4)
+    method_source (0.8.2)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
+    minitest (5.9.1)
+    needle (1.3.0)
+    odba (1.1.2)
+      ydbd-pg (>= 0.5.1)
+      ydbi (>= 0.5.1)
+    pg (0.17.0)
+    power_assert (0.3.1)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
+    pry-doc (0.9.0)
+      pry (~> 0.9)
+      yard (~> 0.8)
+    rack (2.0.3)
+    rake (11.3.0)
+    rclconf (1.0.0)
+    rrba (1.0.0)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    sbsm (1.4.2)
+      chrono_logger
+      hpricot
+      mail
+      mimemagic
+      rack
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
+    slop (3.6.0)
+    syck (1.3.0)
+    test-unit (3.2.1)
+      power_assert
+    transaction-simple (1.4.0.2)
+    yard (0.9.5)
+    ydbd-pg (0.5.3)
+      pg
+      ydbi (>= 0.5.0)
+    ydbi (0.5.3)
+      deprecated (= 2.0.1)
+    ydim (1.0.5)
+      deprecated (= 2.0.1)
+      hpricot
+      mail
+      needle
+      odba (>= 1.1.2)
+      rclconf
+      rrba
+      syck
+      ydbd-pg (>= 0.5.1)
+      ydbi (>= 0.5.1)
+      ypdf-writer
+    ypdf-writer (1.3.3)
+      color (>= 1.4.0)
+      transaction-simple (~> 1.3)
+    yus (1.0.4)
+      deprecated (= 2.0.1)
+      highline
+      needle
+      odba
+      pg (= 0.17.0)
+      rclconf
+      ydbd-pg (>= 0.5.1)
+      ydbi (>= 0.5.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bbmb (>= 2.2.6)
+  bundler
+  flexmock
+  minitest
+  pry-byebug
+  pry-doc
+  rake
+  rspec
+  simplecov
+  test-unit
+
+BUNDLED WITH
+   1.14.6
