@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    bbmb (2.2.6)
+    bbmb (2.2.7)
       deprecated (= 2.0.1)
       hpricot
       htmlgrid
@@ -122,7 +122,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bbmb (>= 2.2.6)
+  bbmb (>= 2.2.7)
   bundler
   flexmock
   minitest
