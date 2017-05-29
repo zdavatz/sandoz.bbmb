@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# suite.rb -- oddb -- 08.09.2006 -- hwyss@ywesee.com 
+# suite.rb -- oddb -- 08.09.2006 -- hwyss@ywesee.com
 
 here = File.expand_path(File.dirname(__FILE__))
 $: << here
