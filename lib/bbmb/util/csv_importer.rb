@@ -5,6 +5,7 @@
 require 'bbmb/model/customer'
 require 'bbmb/util/mail'
 require 'yus/entity'
+require 'drb'
 
 module BBMB
   module Util
@@ -31,7 +32,7 @@ class CsvImporter
   end
   def string(str)
     str = str.to_s.strip
-    str.gsub(/\s+/, ' ') unless str.empty? 
+    str.gsub(/\s+/, ' ') unless str.empty?
   end
 end
 class CustomerImporter < CsvImporter
@@ -46,7 +47,7 @@ class CustomerImporter < CsvImporter
     10  =>  :city,
     11  =>  :phone_business,
     12  =>  :fax,
-  }  
+  }
   def import_record(record)
     customer_id = string(record[0])
     ean13 = string(record[1])
@@ -74,7 +75,7 @@ class ProductImporter < CsvImporter
     1   =>  :description_de,
     2   =>  :description_fr,
     3   =>  :ean13,
-    4   =>  :pcode,    
+    4   =>  :pcode,
     5   =>  :price,
   }
   def initialize

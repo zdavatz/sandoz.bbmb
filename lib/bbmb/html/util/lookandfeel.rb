@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # Html::Util::Lookandfeel -- bbmb.ch -- 15.09.2006 -- hwyss@ywesee.com
 
+require 'bbmb/html/util/session'
 require 'sbsm/lookandfeel'
 
 module BBMB
@@ -164,7 +165,7 @@ La versione aggiornata delle nostre CGC può essere visionata e <a href='http://
       :th_price                 =>  "Preis",
       :th_price_base            =>  "Preis",
       :th_price_levels          =>  'Staffelpreise',
-      :th_quantity              =>  'Menge', 
+      :th_quantity              =>  'Menge',
       :th_order_total           =>  "Endpreis",
       :th_organisation          =>  "Kunde",
       :th_plz                   =>  "PLZ",
