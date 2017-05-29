@@ -1,4 +1,4 @@
-function bc_read(bc_comport, bc_noconnection, bc_nocode)
+require(["dojo/domReady!"], function bc_read(bc_comport, bc_noconnection, bc_nocode)
 {
   var data = new Object();
   var BCReader = dojo.byId('BCReader');
@@ -20,13 +20,13 @@ function bc_read(bc_comport, bc_noconnection, bc_nocode)
   {
     return bc_try_or_select(bc_comport, data);
   }
-}
+});
 
-function bc_select_and_try(bc_comport, data)
+require(["dojo/domReady!"], function bc_select_and_try(bc_comport, data)
 {
   var port_selected;
   port_selected = BCReader.SelectCom();
-  if(port_selected < 0) 
+  if(port_selected < 0)
     return false;
   else
     bc_comport.value = port_selected;
@@ -39,19 +39,19 @@ function bc_select_and_try(bc_comport, data)
     alert(data['fail'])
     return false;
   }
-}
+});
 
-function bc_try_or_select(bc_comport, data)
+require(["dojo/domReady!"], function bc_try_or_select(bc_comport, data)
 {
   return bc_try(bc_comport, data) || bc_select_and_try(bc_comport, data);
-}
+});
 
-function bc_try(bc_comport, data)
+require(["dojo/domReady!"], function bc_try(bc_comport, data)
 {
   var numCodes = -1;
   BCReader.SetCom(bc_comport.value)
-  if(!BCReader.Init()) 
-  {  
+  if(!BCReader.Init())
+  {
     bc_comport.value = -1;
     return false;
   }
@@ -89,18 +89,18 @@ function bc_try(bc_comport, data)
       }
     }
     BCReader.Exit();
-    bc_send(BarCodes);    
+    bc_send(BarCodes);
   }
   return true;
-}
+});
 
 // this function is testable even if there is no Barcode-Reader
-function bc_send(BarCodes)
+require(["dojo/domReady!"], function bc_send(BarCodes)
 {
   BarCodes["event"] = 'scan';
   var form = document.createElement( "form" );
   form.method = 'POST';
-  form.action = '/index.rbx'; 
+  form.action = '/index.rbx';
   for(fname in BarCodes)
   {
     var input = document.createElement( "input" );
@@ -119,13 +119,13 @@ function bc_send(BarCodes)
     },
     mimetype: "text/json"
   });
-}
+});
 
-function bc_clear()
+require(["dojo/domReady!"], function bc_clear()
 {
   if(BCReader.Init())
   {
     BCReader.Clear();
     BCReader.Exit();
   }
-}
+});
