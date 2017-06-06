@@ -75,3 +75,29 @@ Modify etc/config.yml to
 *** Abmelden
 After selecting abmelden the link "Abmelden" should no longer appear.
 
+## Testing the bin/sandoz_admin interface
+
+* Start it via sudo -u bbmb /usr/local/bin/bundle-240 exec bin/sandoz_admin
+** Here is a replay of session
+  sudo -u bbmb bundle exec bin/virbac_admin
+  Verify it with the following commands
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Order).size
+  -> 45771
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).size
+  -> 1679
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).first
+  -> #<BBMB::Model::Customer:0x00000004c0f4f0>
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).first.customer_id
+  -> test
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).last.customer_id
+  -> 99
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).last.orders.size
+  -> 111
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).last.orders.first
+  -> #<BBMB::Model::Order:0x0000000544be20>
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).last.orders.last
+  -> #<BBMB::Model::Order:0x000000022902c8>
+  ch.bbmb.sandoz> ODBA.cache.extent(BBMB::Model::Customer).last.orders.last.total
+  -> 60.88
+  ch.bbmb.sandoz> exit
+  -> Goodbye

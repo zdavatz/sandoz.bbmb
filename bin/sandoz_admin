@@ -1,0 +1,87 @@
+#!/usr/bin/env ruby
+# Admin -- bbmb -- 09.07.2003 -- hwyss@ywesee.com
+
+require 'drb'
+require 'bbmb'
+$: << File.expand_path('../lib', File.dirname(__FILE__))
+begin
+  require 'pry'
+rescue LoadError
+end
+
+require 'bbmb/config'
+[ File.join(Dir.pwd, 'etc', 'config.yml'),
+].each do |config_file|
+  if File.exist?(config_file)
+    puts "BBMB.config.load from #{config_file}"
+    BBMB.config.load (config_file)
+    break
+  end
+end
+ENV['SERVER_PORT'] =  BBMB.config.server_port.to_s if BBMB.config.respond_to?(:server_port)
+require 'bbmb/html/util/validator'
+require 'bbmb/util/app'
+require 'sbsm/logger'
+require 'bbmb/util/rack_interface'
+
+require 'readline'
+include Readline
+
+Kernel.trap('INT') {
+  if($current.respond_to?(:exit))
+    $current.exit
+    $current = nil
+  else
+    puts "<ctrl-c> is used to kill admin-threads."
+    puts "Type <quit> or <exit> to exit."
+  end
+}
+
+auth_domain = BBMB.config.auth_domain
+$0 = "#{auth_domain} (Admin-Tool)"
+prompt = "#{auth_domain}> "
+
+DRb.start_service('druby://localhost:0')
+bbmb = DRbObject.new(nil, BBMB.config.server_url)
+last_error = nil
+priority = -1
+while(line = readline(prompt, true))
+  result = ''
+  result.extend(DRb::DRbUndumped)
+  line.strip!
+  $stdout.print "-> "
+  line.gsub! /puts\s+((.(?!end|;))*.)/, "BBMB.logger.error('admin') { \\1 }"
+  case line.downcase
+  when 'exit', 'quit'
+    $stdout.puts 'Goodbye'
+    break
+  when 'bt', 'backtrace'
+    if last_error.respond_to?(:backtrace)
+      $stdout.puts last_error.backtrace
+    else
+      $stdout.puts 'No Error'
+    end
+  when /^last_error/
+    begin
+      $stdout.puts eval(line)
+    rescue StandardError, SyntaxError => last_error
+      $stdout.puts last_error
+    end
+  when /sp\s+(-?\d+)/, /set_priority\s+(-?\d+)/
+    priority = $~[1].to_i
+    $stdout.puts "setting Priority to #{priority}"
+  else
+    begin
+      bgflag = line.slice!(/\s*\&\s*$/)
+      $current = bbmb._admin(line, result, priority)
+      unless(bgflag)
+        $current.join
+      end
+      $stdout.puts result
+    rescue StandardError, SyntaxError => last_error
+      $stdout.puts last_error
+    end
+  end
+  $current = nil
+  $stdout.flush
+end
