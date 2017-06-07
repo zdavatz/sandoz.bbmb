@@ -10,14 +10,6 @@ rescue LoadError
 end
 
 require 'bbmb/config'
-[ File.join(Dir.pwd, 'etc', 'config.yml'),
-].each do |config_file|
-  if File.exist?(config_file)
-    puts "BBMB.config.load from #{config_file}"
-    BBMB.config.load (config_file)
-    break
-  end
-end
 ENV['SERVER_PORT'] =  BBMB.config.server_port.to_s if BBMB.config.respond_to?(:server_port)
 require 'bbmb/html/util/validator'
 require 'bbmb/util/app'
