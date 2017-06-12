@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    bbmb (2.3.0)
+    bbmb (2.3.1)
       deprecated (= 2.0.1)
       hpricot
       htmlgrid
@@ -30,7 +30,7 @@ GEM
     htmlgrid (1.1.4)
       sbsm (>= 1.2.7)
     json (2.0.2)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)
@@ -71,7 +71,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    sbsm (1.4.3)
+    sbsm (1.4.4)
       chrono_logger
       hpricot
       mail
@@ -122,7 +122,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bbmb (>= 2.3.0)
+  bbmb (>= 2.3.1)
   bundler
   flexmock
   minitest

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-  gem 'bbmb', '>= 2.3.0'
+gem 'bbmb', '>= 2.3.1'
 
 group :test do
   gem 'bundler'
