@@ -28,7 +28,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rclconf"
   spec.add_dependency "needle"
   spec.add_dependency "hpricot"
-  spec.add_dependency "bbmb",    '>= 2.0.1'
+  spec.add_dependency "bbmb",    '>= 2.3.1'
+  spec.add_dependency "sbsm",    '>= 1.4.5'
   spec.add_runtime_dependency 'deprecated', '= 2.0.1'
 
   spec.add_runtime_dependency "yus"

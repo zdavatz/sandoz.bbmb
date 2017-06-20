@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bbmb', '>= 2.3.1'
+gem 'bbmb', '>= 2.3.2'
 
 group :test do
   gem 'bundler'
@@ -13,10 +13,6 @@ group :test do
 end
 
 group :debugger do
-	if RUBY_VERSION.match(/^1/)
-		gem 'pry-debugger'
-	else
-		gem 'pry-byebug'
-    gem 'pry-doc'
-	end
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
