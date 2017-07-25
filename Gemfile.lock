@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     sandoz.bbmb.ch (1.0.1)
-      bbmb (>= 2.3.1)
+      bbmb (>= 2.3.3)
       deprecated (= 2.0.1)
       hpricot
       htmlgrid
@@ -20,7 +20,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    bbmb (2.3.2)
+    bbmb (2.3.3)
       deprecated (= 2.0.1)
       hpricot
       htmlgrid
@@ -90,7 +90,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    sbsm (1.4.5)
+    sbsm (1.5.6)
       chrono_logger
       hpricot
       mail
@@ -153,4 +153,4 @@ DEPENDENCIES
   test-unit
 
 BUNDLED WITH
-   1.15.1
+   1.15.3
