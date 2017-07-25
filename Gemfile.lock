@@ -1,22 +1,3 @@
-PATH
-  remote: .
-  specs:
-    sandoz.bbmb.ch (1.0.1)
-      bbmb (>= 2.3.3)
-      deprecated (= 2.0.1)
-      hpricot
-      htmlgrid
-      json
-      needle
-      odba (>= 1.1.2)
-      rclconf
-      sbsm (>= 1.4.5)
-      syck
-      ydbd-pg (>= 0.5.1)
-      ydbi (>= 0.5.1)
-      ydim (>= 0.5.1)
-      yus
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,9 +22,9 @@ GEM
     coderay (1.1.1)
     color (1.8)
     deprecated (2.0.1)
-    diff-lcs (1.2.5)
+    diff-lcs (1.3)
     docile (1.1.5)
-    flexmock (2.2.1)
+    flexmock (2.3.5)
     highline (1.7.8)
     hpricot (0.8.6)
     htmlgrid (1.1.4)
@@ -56,13 +37,12 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
-    minitest (5.9.1)
+    minitest (5.10.3)
     needle (1.3.0)
     odba (1.1.2)
       ydbd-pg (>= 0.5.1)
       ydbi (>= 0.5.1)
     pg (0.17.0)
-    power_assert (0.3.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -74,37 +54,35 @@ GEM
       pry (~> 0.9)
       yard (~> 0.8)
     rack (2.0.3)
-    rake (11.3.0)
+    rake (12.0.0)
     rclconf (1.0.0)
     rrba (1.0.0)
-    rspec (3.5.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.4)
-      rspec-support (~> 3.5.0)
-    rspec-expectations (3.5.0)
+    rspec (3.6.0)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-mocks (3.5.0)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-support (3.5.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
     sbsm (1.5.6)
       chrono_logger
       hpricot
       mail
       mimemagic
       rack
-    simplecov (0.12.0)
+    simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
+    simplecov-html (0.10.1)
     slop (3.6.0)
     syck (1.3.0)
-    test-unit (3.2.1)
-      power_assert
     transaction-simple (1.4.0.2)
     yard (0.9.5)
     ydbd-pg (0.5.3)
@@ -141,16 +119,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bbmb (>= 2.3.3)
   flexmock
   minitest
   pry-byebug
   pry-doc
   rake
   rspec
-  sandoz.bbmb.ch!
   simplecov
-  test-unit
 
 BUNDLED WITH
    1.15.3

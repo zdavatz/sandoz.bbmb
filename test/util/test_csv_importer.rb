@@ -5,14 +5,13 @@ $: << File.expand_path('../../lib', File.dirname(__FILE__))
 $: << File.expand_path('..', File.dirname(__FILE__))
 
 require "minitest/autorun"
-require 'flexmock/test_unit'
+require 'flexmock/minitest'
 require 'stub/persistence'
 require 'bbmb/util/csv_importer'
 
 module BBMB
   module Util
 class TestCsvImporter < Minitest::Test
-  include FlexMock::TestCase
   def test_import
     src = StringIO.new "\344\366\374"
     importer = flexmock(CsvImporter.new)
@@ -27,7 +26,6 @@ class TestCsvImporter < Minitest::Test
   end
 end
 class TestCustomerImporter < Minitest::Test
-  include FlexMock::TestCase
   def setup
     Model::Customer.clear_instances
     BBMB.server = flexmock('server')
@@ -93,7 +91,6 @@ class TestCustomerImporter < Minitest::Test
   end
 end
 class TestProductImporter < Minitest::Test
-  include FlexMock::TestCase
   def setup
     Model::Product.clear_instances
     @dir = File.expand_path('data', File.dirname(__FILE__))
